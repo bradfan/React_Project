@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 class Header extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className="title">Working Title</h1>
+        <h1 className="title">Music Registry</h1>
 
         <nav className="navbar">
           <p>
@@ -14,8 +14,8 @@ class Header extends Component {
             </Link>
           </p>
           <p>
-            <Link className="nav-link btn" to="/songRegistry">
-              Song Registry
+            <Link className="nav-link btn" to="/SongRegistry">
+              Music Registry
             </Link>
           </p>
         </nav>

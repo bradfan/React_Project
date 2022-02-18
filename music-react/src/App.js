@@ -2,11 +2,18 @@ import "./index.css";
 import React, { Component } from "react";
 import RouterComponent from "./component/general/RouterComponent.jsx";
 
+import './index.css';
+import React, {Component} from 'react';
+import './App.css';
+import './bootstrap.css';
+import RouterComponent from './component/general/RouterComponent.jsx'
+
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <RouterComponent />
+      <div className="App">
+     
+          <RouterComponent />
       </div>
     );
   }
