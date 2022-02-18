@@ -14,8 +14,8 @@ class Header extends Component {
             </Link>
           </p>
           <p>
-            <Link className="nav-link btn" to="/EmployeeRegistry">
-              Music Registry
+            <Link className="nav-link btn" to="/songRegistry">
+              Song Registry
             </Link>
           </p>
         </nav>
