@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className="title">Working Title</h1>
+        <h1 className="title">Music Registry</h1>
 
         <nav className="navbar">
           <p>

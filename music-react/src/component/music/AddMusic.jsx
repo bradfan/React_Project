@@ -29,7 +29,7 @@ class AddMusic extends Component {
             onAlbum: this.state.onAlbum
         }
         SongDataService.addSong(song)
-            .then(this.props.history.push(`SongRegistry`))
+            .then(this.props.history.push(`songRegistry`))
             
             this.state.collection.forEach((elm) => {
 
