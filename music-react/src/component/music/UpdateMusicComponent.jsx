@@ -7,7 +7,7 @@ class UpdateMusicComponent extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            songName: this.props.match.params.jobTitle,
+            songTitle: this.props.match.params.songTitle,
             artistName: this.props.match.params.artistName,
             onAlbum: this.props.match.params.onAlbum
         }
@@ -17,7 +17,7 @@ class UpdateMusicComponent extends Component {
     onSubmit(values) {
         let song = {
             id: this.state.id,
-            songName: values.songName,
+            songTitle: values.songTitle,
             artistName: values.artistName,
             onAlbum: values.onAlbum
         }
@@ -26,14 +26,14 @@ class UpdateMusicComponent extends Component {
         }
 
         render() {
-            let {id, songName, artistName, onAlbum} = this.state
+            let {id, songTitle, artistName, onAlbum} = this.state
             return (
                 <div>
                     <div className="songBackground">
                     <h3>Update Song</h3>
                     </div>    
                     <div className="container"> <Formik
-                    initialValues={{id, songName, artistName, onAlbum}}
+                    initialValues={{id, songTitle, artistName, onAlbum}}
                     onSubmit={this.onSubmit}
                     enableReinitialize={true}
                 >
@@ -46,7 +46,7 @@ class UpdateMusicComponent extends Component {
                                 </fieldset>
                                 <fieldset>
                                     <label>Song</label>
-                                    <Field className="form-control" type="text" name="songName" />
+                                    <Field className="form-control" type="text" name="songTitle" />
                                 </fieldset>
                                 <fieldset>
                                     <label>Artist</label>

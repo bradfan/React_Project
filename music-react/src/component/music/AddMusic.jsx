@@ -25,7 +25,7 @@ class AddMusic extends Component {
     handleSubmit() {
         let song = {
             id: this.state.id,
-            songName: this.state.songName,
+            songTitle: this.state.songTitle,
             artistName: this.state.artistName,
             onAlbum: this.state.onAlbum
         }
@@ -51,7 +51,7 @@ class AddMusic extends Component {
                         </div>
                         <div>
                             <label>Job Title:</label>
-                            <input className="form-control" type="text" name="songName" onChange={this.handleChange}/>
+                            <input className="form-control" type="text" name="songTitle" onChange={this.handleChange}/>
                         </div>
                         <div>
                             <label>Artist Name:</label>

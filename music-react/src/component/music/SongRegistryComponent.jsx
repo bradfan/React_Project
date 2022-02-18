@@ -15,7 +15,7 @@ class SongRegistryComponent extends Component {
     }
 
     componentDidMount() {
-        console.log("did mount");
+        
         this.refreshSongRegistry();
     }
 
@@ -29,21 +29,21 @@ class SongRegistryComponent extends Component {
         )
     }
 
-    deleteSongClicked(id, songName, artistName, onAlbum) {
+    deleteSongClicked(id,songTitle, artistName, onAlbum) {
         console.log('Delete Song Clicked')
         SongDataService.deleteSong(id)
         .then(
             response => {
-                this.setState({message: `Deleted Song: ${songName} ${artistName}`})
+                this.setState({message: `Deleted Song: ${songTitle} ${artistName}`})
                 alert(this.state.message)
                 this.refreshSongRegistry();
             }
         )
     }
 
-    updateSongClicked(id, songName) {
+    updateSongClicked(id, songTitle) {
         console.log('Update Song Clicked')
-        this.props.history.push(`/song/${id}/${songName}`)
+        this.props.history.push(`/song/${id}/${songTitle}`)
     }
 
     addSongClicked() {
@@ -73,11 +73,11 @@ class SongRegistryComponent extends Component {
                                 songs =>
                                 <tr key={songs.id}>
                                     <td>{songs.id}</td>
-                                    <td>{songs.songName}</td>
+                                    <td>{songs.songTitle}</td>
                                     <td>{songs.artistName}</td>
                                     <td>{songs.onAlbum}</td>
-                                    <td><button className="btn btn-warning" onClick={() => this.deleteSongClicked(songs.id, songs.songName, songs.artistName, songs.onAlbum)}>Delete</button></td>
-                                    <td><button className="btn btn-success" onClick={() => this.updateSongClicked(songs.id, songs.songName, songs.artistName, songs.onAlbum)}>Update</button></td>
+                                    <td><button className="btn btn-warning" onClick={() => this.deleteSongClicked(songs.id, songs.songTitle, songs.artistName, songs.onAlbum)}>Delete</button></td>
+                                    <td><button className="btn btn-success" onClick={() => this.updateSongClicked(songs.id, songs.songTitle, songs.artistName, songs.onAlbum)}>Update</button></td>
                                 </tr>
                             )
                         }
