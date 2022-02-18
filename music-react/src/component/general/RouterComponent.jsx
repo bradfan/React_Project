@@ -1,4 +1,4 @@
-import UpdateSongComponent from "../music/UpdateMusicComponent";
+import UpdateMusicComponent from "../music/UpdateMusicComponent";
 import SongRegistryComponent from "../music/SongRegistryComponent";
 import AddMusic from "../music/AddMusic"
 
@@ -11,7 +11,7 @@ class RouterComponent extends Component {
                 <Switch>
                     <Route exact path="/">WelcomeComponent name="Bob"</Route>
                     <Route path="/theSong/:id" component={AddMusic} />
-                    <Route path="/song/:id/:artistName" component = {UpdateSongComponent} />
+                    <Route path="/song/:id/:artistName" component = {UpdateMusicComponent} />
                     <Route path = "/songRegistry" exact component = {SongRegistryComponent} />
                     </Switch> 
                  <FooterComponent />      
