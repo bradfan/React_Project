@@ -42,12 +42,12 @@ class SongRegistryComponent extends Component {
 
     updateSongClicked(id, songName) {
         console.log('Update Song Clicked')
-        this.props.songs.push(`/song/${id}/${songName}`)
+        this.props.history.push(`/song/${id}/${songName}`)
     }
 
     addSongClicked() {
         console.log('Add Song Clicked')
-        this.props.songs.push(`/theSong/-1`)
+        this.props.history.push(`/theSong/-1`)
     }
 
     render() {
