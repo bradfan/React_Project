@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class WelcomeComponent extends Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class WelcomeComponent extends Component {
         <div className="box">
           <h1 className="welcome">Welcome {this.state.name} to the....</h1>
           <h2 class="manage">
-            You can manage your employees{" "}
-            <Link to="/songRegistry">here</Link>
+            You can manage your songs
+            <Link to="/songRegistry"> here</Link>
           </h2>
         </div>
       </div>

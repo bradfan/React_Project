@@ -15,6 +15,7 @@ class SongRegistryComponent extends Component {
     }
 
     componentDidMount() {
+        console.log("did mount");
         this.refreshSongRegistry();
     }
 
