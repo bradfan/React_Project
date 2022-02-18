@@ -10,24 +10,24 @@ class AddLogin extends Component {
             password: "",
             loginCollection: []
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleLoginSubmit.bind(this)
+        this.handleChange = this.handleLoginChange.bind(this)
     }
 
-    handleChange(event) {
+    handleLoginChange(event) {
         this.setState( {
             [event.target.name]: event.target.value
         })
     }
     
-    handleSubmit() {
+    handleLoginSubmit() {
         let login = {
             id: this.state.id,
-            name: this.state.jobTitle,
-            password: this.state.firstName,
+            name: this.state.name,
+            password: this.state.password
             
         }
-        LoginDataService.loginEmployee(employee)
+        LoginDataService.loginEmployee(login)
             .then(this.props.history.push(`/LoginRegistry`))
 
         this.state.loginCollection.forEach((elm) => {

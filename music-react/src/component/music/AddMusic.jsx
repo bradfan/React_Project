@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SongDataService from '../../service/SongDataService'
 
+
 class AddMusic extends Component {
     constructor(props) {
         super(props)
@@ -29,7 +30,7 @@ class AddMusic extends Component {
             onAlbum: this.state.onAlbum
         }
         SongDataService.addSong(song)
-            .then(this.props.history.push(`SongRegistry`))
+            .then(this.props.history.push(`/SongRegistry`))
             
             this.state.collection.forEach((elm) => {
 
