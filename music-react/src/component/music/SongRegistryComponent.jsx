@@ -29,7 +29,7 @@ class SongRegistryComponent extends Component {
     }
 
     deleteSongClicked(id, songName, artistName, onAlbum) {
-        console.log('Delete Employee Clicked')
+        console.log('Delete Song Clicked')
         SongDataService.deleteSong(id)
         .then(
             response => {
@@ -42,6 +42,11 @@ class SongRegistryComponent extends Component {
 
     updateSongClicked(id, songName) {
         console.log('Update Song Clicked')
+        this.props.history.push(`/song/${id}/${songName}`)
+    }
+
+    addSongClicked() {
+        console.log('Add Song Clicked')
         this.props.history.push(`/theSong/-1`)
     }
 
