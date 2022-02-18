@@ -6,9 +6,9 @@ class AddMusic extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            songTitle: ``,
-            artistName: ``,
-            onAlbum: ``,
+            songTitle: "",
+            artistName: "",
+            onAlbum: "",
             collection: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
