@@ -15,18 +15,11 @@ class RouterComponent extends Component {
         <Router>
           <Header />
           <Routes>
-          <Route exact path="/" element={<WelcomeComponent />}></Route>
-           <Route path="/theSong/:id" component={AddMusic} />
-            <Route
-              path="/song/:id/:artistName"
-              component={UpdateMusicComponent}
-            />
-            <Route
-              path="/songRegistry"
-              exact
-              component={SongRegistryComponent}
-            />
-          </Routes>
+                    <Route exact path="/" element={<WelcomeComponent/>}></Route>
+                    <Route path="/theSong/:id" element={<AddMusic/>}></Route>
+                    <Route path="/song/:id/:artistName" element={<UpdateMusicComponent/>}></Route>
+                    <Route path="/songRegistry" element={<SongRegistryComponent/>}></Route> 
+                    </Routes>
           <Footer />
         </Router>
       </div>
