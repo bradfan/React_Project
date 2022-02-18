@@ -15,7 +15,7 @@ class Welcome extends Component {
           <h1 className="welcome">Welcome {this.state.name} to the....</h1>
           <h2 class="manage">
             You can manage your employees{" "}
-            <Link to="/EmployeeRegistry">here</Link>
+            <Link to="/songRegistry">here</Link>
           </h2>
         </div>
       </div>
