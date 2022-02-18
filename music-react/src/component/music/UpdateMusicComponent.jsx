@@ -7,7 +7,7 @@ class UpdateMusicComponent extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            songName: this.props.match.params.jobTitle,
+            songName: this.props.match.params.songName,
             artistName: this.props.match.params.artistName,
             onAlbum: this.props.match.params.onAlbum
         }

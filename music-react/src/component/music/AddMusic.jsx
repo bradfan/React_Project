@@ -6,7 +6,7 @@ class AddMusic extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            songTitle: "",
+            songName: "",
             artistName: "",
             onAlbum: "",
             collection: []
