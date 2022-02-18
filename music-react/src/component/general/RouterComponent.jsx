@@ -1,6 +1,8 @@
 import UpdateMusicComponent from "../music/UpdateMusicComponent";
 import SongRegistryComponent from "../music/SongRegistryComponent";
 import AddMusic from "../music/AddMusic"
+import React, {Component} from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 class RouterComponent extends Component {
     render() {
