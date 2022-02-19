@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import UpdateMusicComponent from '../music/UpdateMusicComponent'
 import SongRegistryComponent from '../music/SongRegistryComponent'
+import SongRegFunctionComponent from '../music/SongRegFunctionComponent'
 import AddMusic from '../music/AddMusic'
 import Footer from '../pages/Footer'
 import Header from '../pages/Header'
@@ -17,8 +18,9 @@ class RouterComponent extends Component {
                 <Routes>
                     <Route exact path="/" element={<WelcomeComponent/>}></Route>
                     <Route path="/theSong/:id" element={<AddMusic/>}></Route>
-                    <Route path="/song/:id/:artistName" element={<UpdateMusicComponent/>}></Route>
+                    <Route path="/song/:id" element={<UpdateMusicComponent/>}></Route>
                     <Route path="/songRegistry" element={<SongRegistryComponent/>}></Route> 
+                    {/* <Route path="/songRegistry" element={<SongRegFunctionComponent/>}></Route>  */}
                     </Routes>
                     <Footer />      
                  </Router>

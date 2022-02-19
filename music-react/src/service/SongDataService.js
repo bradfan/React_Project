@@ -5,6 +5,10 @@ class SongDataService {
     return axios.get(`http://localhost:8080/retrieveAllSongs`);
   }
 
+  retrieveById(id) {
+    return axios.get(`http://localhost:8080/retrieveById/${id}`);
+  }
+
   deleteSong(id) {
     return axios.delete(`http://localhost:8080/deleteSong/${id}`);
   }

@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
 import SongDataService from '../../service/SongDataService'
+import { useState, useEffect,  useCallback  } from "react";
+import {Link} from "react-router-dom";
+
 
 class SongRegistryComponent extends Component {
-    constructor(props) {
+   constructor(props) {
         super(props)
         this.state = {
             songs: []
@@ -15,7 +18,6 @@ class SongRegistryComponent extends Component {
     }
 
     componentDidMount() {
-        
         this.refreshSongRegistry();
     }
 
@@ -40,9 +42,22 @@ class SongRegistryComponent extends Component {
             }
         )
     }
+  
+    // updateSongClicked(songTitle) {
+    //     console.log('Update Song Clicked')
+    //     SongDataService.updateSong(songTitle)
+    //     .then(
+    //         response => {
+    //             this.setState({message: `Updated Song: ${songTitle}`})
+    //             alert(this.state.message)
+    //             this.refreshSongRegistry();
+    //         }
+    //     )
+    // }
 
     updateSongClicked(id, songTitle) {
         console.log('Update Song Clicked')
+        console.log(`${id} ${songTitle}`)
         this.props.history.push(`/song/${id}/${songTitle}`)
     }
 
@@ -76,8 +91,9 @@ class SongRegistryComponent extends Component {
                                     <td>{songs.songTitle}</td>
                                     <td>{songs.artistName}</td>
                                     <td>{songs.onAlbum}</td>
+                                    
                                     <td><button className="btn btn-warning" onClick={() => this.deleteSongClicked(songs.id, songs.songTitle, songs.artistName, songs.onAlbum)}>Delete</button></td>
-                                    <td><button className="btn btn-success" onClick={() => this.updateSongClicked(songs.id, songs.songTitle, songs.artistName, songs.onAlbum)}>Update</button></td>
+                                    <td><Link to={`/song/${songs.id}`}><button className="btn btn-success">Update</button></Link></td>
                                 </tr>
                             )
                         }

@@ -13,7 +13,7 @@ class WelcomeComponent extends Component {
       <div className="container">
         <div className="box">
           <h1 className="welcome">Welcome {this.state.name} to the....</h1>
-          <h2 class="manage">
+          <h2 className="manage">
             You can manage your songs
             <Link to="/songRegistry"> here</Link>
           </h2>

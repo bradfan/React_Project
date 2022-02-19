@@ -1,73 +1,91 @@
-import SongDataService from "../../service/SongDataService"
-import { Formik, Form, Field} from 'formik'
-import React, {Component } from 'react'
+import SongDataService from "../../service/SongDataService";
+import { Formik, Form, Field } from "formik";
+import React, { Component } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
 
-class UpdateMusicComponent extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            id: this.props.match.params.id,
-            songTitle: this.props.match.params.songTitle,
-            artistName: this.props.match.params.artistName,
-            onAlbum: this.props.match.params.onAlbum
-        }
-        this.onSubmit = this.onSubmit.bind(this)
-    }
+function UpdateMusicComponent() {
+  const [songs, setSongs] = useState({});
+  const [loading, isLoading] = useState(true);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    onSubmit(values) {
-        let song = {
-            id: this.state.id,
-            songTitle: values.songTitle,
-            artistName: values.artistName,
-            onAlbum: values.onAlbum
+  useEffect(() => {
+    axios.get(`http://localhost:8080/retrieveById/${id}`)
+    .then(
+        (response) => {
+            setSongs(response.data);
+            isLoading(false);
         }
-            SongDataService.updateSong(song)
-            .then(() => this.props.history.push(`/songRegistry`))
-        }
-
-        render() {
-            let {id, songTitle, artistName, onAlbum} = this.state
-            return (
-                <div>
-                    <div className="songBackground">
-                    <h3>Update Song</h3>
-                    </div>    
-                    <div className="container"> <Formik
-                    initialValues={{id, songTitle, artistName, onAlbum}}
-                    onSubmit={this.onSubmit}
-                    enableReinitialize={true}
-                >
-                    {
-                        () => (
-                            <Form>
-                                <fieldset className="form-group">
-                                    <label>Id</label>
-                                    <Field className="form-control" type="text" name="id" disabled />
-                                </fieldset>
-                                <fieldset>
-                                    <label>Song</label>
-                                    <Field className="form-control" type="text" name="songTitle" />
-                                </fieldset>
-                                <fieldset>
-                                    <label>Artist</label>
-                                    <Field className="form-control" type="text" name="artistName" />
-                                </fieldset>
-                                <fieldset>
-                                    <label>Album Name</label>
-                                    <Field className="form-control" type="text" name="albumName" />
-                                </fieldset>
-                                
-                                <button className="btn btn-success" type="submit">Save</button>
-                            </Form>
-                        )
-                    } 
-                </Formik><br/><br/>
-            </div>
-        </div>
     )
-}
+  },[]);
+
+
+  const handleChange = (e)  =>{ 
+      setSongs({
+          ...songs,
+          [e.target.name]:e.target.value
+      })
+  }
+
+// //   const handleSubmit = (e) => {
+//     e.preventDefault(); //remove this part if it stops working
+//     setCar({
+//         ...car,
+//         [e.target.name]: e.target.value
+//     })
+//     CarService.updateCar(car).then
+//     (goToCarsPage)
+// }
+
+  return (
+    <div>
+      <div className="songBackground">
+        <h3>Update Song</h3>
+      </div>
+      <div className="container">
+        <Formik
+          initialValues={ id, songs.songTitle, songs.artistName, songs.onAlbum }
+           onSubmit={handleChange}
+          enableReinitialize={true}
+        >
+          {() => (
+            <Form>
+              <fieldset className="form-group">
+                <label>Id</label>
+                <Field
+                  className="form-control"
+                  type="text"
+                  name= "id"
+                  disabled
+                />
+              </fieldset>
+              <fieldset>
+                <label>Song</label>
+                <Field className="form-control" type="text" name="songTitle" />
+              </fieldset>
+              <fieldset>
+                <label>Artist</label>
+                <Field className="form-control" type="text" name="artistName" />
+              </fieldset>
+              <fieldset>
+                <label>Album Name</label>
+                <Field className="form-control" type="text" name="albumName" />
+              </fieldset>
+
+              <button className="btn btn-success" type="submit" onSubmit={handleChange}>
+                Save
+              </button>
+            </Form>
+          )}
+        </Formik>
+        <p>{id}</p>
+        <br />
+        <br />
+      </div>
+    </div>
+  );
 }
 
-export default UpdateMusicComponent
-
-    
+export default UpdateMusicComponent;
