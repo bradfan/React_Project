@@ -11,33 +11,34 @@ function UpdateMusicComponent() {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const returnToRegistry = useCallback(() =>
+    navigate(`/songRegistry`, { replace: true })
+  );
+
   useEffect(() => {
-    axios.get(`http://localhost:8080/retrieveById/${id}`)
-    .then(
-        (response) => {
-            setSongs(response.data);
-            isLoading(false);
-        }
-    )
-  },[]);
+    axios.get(`http://localhost:8080/retrieveById/${id}`).then((response) => {
+      setSongs(response.data);
+      isLoading(false);
+    });
+  }, []);
 
+  const handleChange = (e) => {
+    console.log("update song SAVE btn clicked");
+    setSongs({
+      ...songs,
+      [e.target.name]: e.target.value,
+    });
+    SongDataService.updateSong(songs);
+  };
 
-  const handleChange = (e)  =>{ 
-      setSongs({
-          ...songs,
-          [e.target.name]:e.target.value
-      })
-  }
-
-// //   const handleSubmit = (e) => {
-//     e.preventDefault(); //remove this part if it stops working
-//     setCar({
-//         ...car,
-//         [e.target.name]: e.target.value
-//     })
-//     CarService.updateCar(car).then
-//     (goToCarsPage)
-// }
+  const handleSubmit = (e) => {
+    e.preventDefault(); //remove this part if it stops working
+    setSongs({
+      ...songs,
+      [e.target.name]: e.target.value,
+    })
+    returnToRegistry();
+  };
 
   return (
     <div>
@@ -45,7 +46,60 @@ function UpdateMusicComponent() {
         <h3>Update Song</h3>
       </div>
       <div className="container">
-        <Formik
+        <form className="form-control">
+          <label>ID</label>
+          <input
+            className="form-control"
+            placeholder="Choose an ID that hasn't been assigned."
+            type="text"
+            name="id"
+            onChange={handleChange}
+            required
+          />
+          <label>Song</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Update Song Title"
+            name="songTitle"
+            onChange={handleChange}
+            required
+          />
+          <label>Artist</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Update Artist Name"
+            name="artistName"
+            onChange={handleChange}
+            required
+          />
+          <label>Artist</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Update Album Name"
+            name="onAlbum"
+            onChange={handleChange}
+            required
+          />
+
+          <button className="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </form>
+        {/* <p>{id}</p> */}
+        <br />
+        <br />
+      </div>
+    </div>
+  );
+}
+
+export default UpdateMusicComponent;
+
+{
+  /* <Formik
           initialValues={ id, songs.songTitle, songs.artistName, songs.onAlbum }
            onSubmit={handleChange}
           enableReinitialize={true}
@@ -57,35 +111,24 @@ function UpdateMusicComponent() {
                 <Field
                   className="form-control"
                   type="text"
-                  name= "id"
+                  name="id"
                   disabled
                 />
               </fieldset>
               <fieldset>
                 <label>Song</label>
-                <Field className="form-control" type="text" name="songTitle" />
-              </fieldset>
+                <Field className="form-control" type="text" name="songTitle" /></fieldset>
               <fieldset>
                 <label>Artist</label>
-                <Field className="form-control" type="text" name="artistName" />
-              </fieldset>
+                <Field className="form-control" type="text" name="artistName" /></fieldset>
               <fieldset>
                 <label>Album Name</label>
-                <Field className="form-control" type="text" name="albumName" />
-              </fieldset>
+                <Field className="form-control" type="text" name="onAlbum" /></fieldset>
 
               <button className="btn btn-success" type="submit" onSubmit={handleChange}>
                 Save
               </button>
             </Form>
           )}
-        </Formik>
-        <p>{id}</p>
-        <br />
-        <br />
-      </div>
-    </div>
-  );
+        </Formik> */
 }
-
-export default UpdateMusicComponent;
