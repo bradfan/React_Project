@@ -1,13 +1,11 @@
 import SongDataService from "../../service/SongDataService";
-import { Formik, Form, Field } from "formik";
-import React, { Component } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 function UpdateMusicComponent() {
   const [songs, setSongs] = useState({});
-  const [loading, isLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -18,8 +16,7 @@ function UpdateMusicComponent() {
   useEffect(() => {
     axios.get(`http://localhost:8080/retrieveById/${id}`).then((response) => {
       setSongs(response.data);
-      isLoading(false);
-    });
+      });
   }, []);
 
   const handleChange = (e) => {
@@ -32,7 +29,7 @@ function UpdateMusicComponent() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); //remove this part if it stops working
+    e.preventDefault();
     setSongs({
       ...songs,
       [e.target.name]: e.target.value,
@@ -88,8 +85,7 @@ function UpdateMusicComponent() {
             Submit
           </button>
         </form>
-        {/* <p>{id}</p> */}
-        <br />
+       <br />
         <br />
       </div>
     </div>

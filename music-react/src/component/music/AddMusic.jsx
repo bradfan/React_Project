@@ -1,73 +1,83 @@
-import React, {Component} from 'react'
-import SongDataService from '../../service/SongDataService'
+import React from "react";
+import SongDataService from "../../service/SongDataService";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
 
 
-class AddMusic extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            id: this.props.match.params.id,
-            songTitle: "",
-            artistName: "",
-            onAlbum: "",
-            collection: []
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-    }
+function AddMusic() {
+  const [songs, setSongs] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    handleChange(event) {
-        this.setState( {
-            [event.target.name]: event.target.value
-        })
-    }
+  const returnToRegistry = useCallback(() =>
+    navigate(`/songRegistry`, { replace: true })
+  );
 
-    handleSubmit() {
-        let song = {
-            id: this.state.id,
-            songTitle: this.state.songTitle,
-            artistName: this.state.artistName,
-            onAlbum: this.state.onAlbum
-        }
-        SongDataService.addSong(song)
-            .then(this.props.history.push(`songRegistry`))
-            
-            this.state.collection.forEach((elm) => {
+  useEffect(() => {
+    SongDataService.addSong(songs).then((response) => {
+      setSongs(response.data);
+    });
+  }, []);
 
-            })
-    }
+    const handleChange = (e) => {
+      console.log("add song SAVE btn clicked");
+      setSongs({
+        ...songs,
+        [e.target.name]: e.target.value,
+      });
+      
+    };
 
-    render() {
-        return(
-            <div>
-                <div className="jumbotron" style={{backgroundColor: "gray"}}>
-                <h3 style={{textAlign: "center"}}>Add Employee</h3>
-                </div>
-                <div className="container">
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label>ID:</label>
-                            <input className="form-control" type="text" value={this.state.id} disabled/>
-                        </div>
-                        <div>
-                            <label>Job Title:</label>
-                            <input className="form-control" type="text" name="songTitle" onChange={this.handleChange}/>
-                        </div>
-                        <div>
-                            <label>Artist Name:</label>
-                            <input className="form-control" type="text" name="artistName" onChange={this.handleChange}/>
-                        </div>       
-                        <div>
-                            <label>Album</label>
-                            <input className="form-control" type="text" name="onAlbum" onChange={this.handleChange}/>
-                        </div>      
-                        <br/><br/>
-                        <button className="btn btn-success" type="submit">Submit</button><br/><br/>
-                    </form><br/><br/>
-                </div>
-            </div>
-        )
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSongs({
+      [e.target.name]: e.target.value,
+    });
+    SongDataService.addSong(songs);
+    returnToRegistry();
+  };
+  return (
+    <div>
+      <div className="jumbotron" style={{ backgroundColor: "gray" }}>
+        <h3 style={{ textAlign: "center" }}>Add Song</h3>
+      </div>
+      <div className="container">
+        <form>
+          <div className="form-group">
+            <label>ID:</label>
+            <input className="form-control" type="text" value={id} disabled />
+          </div>
+          <div>
+            <label>Song:</label>
+            <input
+              className="form-control"
+              type="text"
+              name="songTitle"
+             onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Artist Name:</label>
+            <input className="form-control" type="text" name="artistName"  onChange={handleChange}/>
+          </div>
+          <div>
+            <label>Album</label>
+            <input className="form-control" type="text" name="onAlbum"  onChange={handleChange}/>
+          </div>
+          <br />
+          <br />
+          <button className="btn btn-success" type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+          <br />
+          <br />
+        </form>
+        <br />
+        <br />
+        <p></p>
+      </div>
+    </div>
+  );
 }
 
-export default AddMusic
+export default AddMusic;

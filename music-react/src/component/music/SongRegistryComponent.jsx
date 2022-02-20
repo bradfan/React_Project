@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import SongDataService from '../../service/SongDataService'
-import { useState, useEffect,  useCallback  } from "react";
 import {Link} from "react-router-dom";
 
 
@@ -43,18 +42,7 @@ class SongRegistryComponent extends Component {
         )
     }
   
-    // updateSongClicked(songTitle) {
-    //     console.log('Update Song Clicked')
-    //     SongDataService.updateSong(songTitle)
-    //     .then(
-    //         response => {
-    //             this.setState({message: `Updated Song: ${songTitle}`})
-    //             alert(this.state.message)
-    //             this.refreshSongRegistry();
-    //         }
-    //     )
-    // }
-
+   
     updateSongClicked(id, songTitle) {
         console.log('Update Song Clicked')
         console.log(`${id} ${songTitle}`)
@@ -101,7 +89,7 @@ class SongRegistryComponent extends Component {
                 </table>
                 <div className="row">
                     <br />
-                    <button className="btn btn-success" onClick={this.addSongClicked}>Add Song</button>
+                    <Link to={`/theSong/:id`}> <button className="btn btn-success">Add Song</button></Link>
                 </div>
                 </div>    
             </div>
@@ -110,3 +98,8 @@ class SongRegistryComponent extends Component {
 }
 
 export default SongRegistryComponent
+
+
+
+
+// onClick={this.addSongClicked}
