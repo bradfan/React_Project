@@ -94,37 +94,4 @@ function UpdateMusicComponent() {
 
 export default UpdateMusicComponent;
 
-{
-  /* <Formik
-          initialValues={ id, songs.songTitle, songs.artistName, songs.onAlbum }
-           onSubmit={handleChange}
-          enableReinitialize={true}
-        >
-          {() => (
-            <Form>
-              <fieldset className="form-group">
-                <label>Id</label>
-                <Field
-                  className="form-control"
-                  type="text"
-                  name="id"
-                  disabled
-                />
-              </fieldset>
-              <fieldset>
-                <label>Song</label>
-                <Field className="form-control" type="text" name="songTitle" /></fieldset>
-              <fieldset>
-                <label>Artist</label>
-                <Field className="form-control" type="text" name="artistName" /></fieldset>
-              <fieldset>
-                <label>Album Name</label>
-                <Field className="form-control" type="text" name="onAlbum" /></fieldset>
 
-              <button className="btn btn-success" type="submit" onSubmit={handleChange}>
-                Save
-              </button>
-            </Form>
-          )}
-        </Formik> */
-}
