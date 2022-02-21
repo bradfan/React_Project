@@ -7,9 +7,9 @@ class LoginDataService {
 
   // extra functionality for possible future login management
 
-    retrieveAllLogin() {
-      return axios.get(`http://localhost:8080/retrieveAllLogin`);
-    }
+    // retrieveAllLogin() {
+    //   return axios.get(`http://localhost:8080/retrieveAllLogin`);
+    // }
 
   //   deleteLogin(id) {
   //     return axios.delete(`http://localhost:8080/deleteLogin/${id}`);

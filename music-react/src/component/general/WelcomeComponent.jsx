@@ -17,12 +17,6 @@ function WelcomeComponent()  {
     });
   }, []);
 
-  useEffect(() => {
-    LoginDataService.retrieveAllLogin().then((response) => {
-      setName(response.data);
-      
-    });
-  }, []);
 
   const handleChange = (e) => {
     console.log("LOGIN btn clicked");

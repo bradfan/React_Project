@@ -6,6 +6,7 @@ import AddMusic from '../music/AddMusic'
 import Footer from '../pages/Footer'
 import Header from '../pages/Header'
 import WelcomeComponent from '../general/WelcomeComponent'
+import LogOutComponent from '../general/LogOutComponent'
 
 
 class RouterComponent extends Component {
@@ -19,7 +20,8 @@ class RouterComponent extends Component {
                     <Route path="/theSong/:id" element={<AddMusic/>}></Route>
                     <Route path="/song/:id" element={<UpdateMusicComponent/>}></Route>
                     <Route path="/songRegistry" element={<SongRegistryComponent/>}></Route> 
-                   </Routes>
+                    <Route path="/LogOut" element={<LogOutComponent/>}></Route> 
+                    </Routes>
                     <Footer />      
                  </Router>
             </div>
