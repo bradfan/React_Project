@@ -7,39 +7,43 @@ import "../../index.css";
 
 function WelcomeComponent()  {
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
   const [login, setLogin] = useState({});
   const { id } = useParams();
  
   useEffect(() => {
     LoginDataService.addLogin(login).then((response) => {
       setLogin(response.data);
+      setName(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    LoginDataService.retrieveAllLogin().then((response) => {
+      setName(response.data);
+      
     });
   }, []);
 
   const handleChange = (e) => {
     console.log("LOGIN btn clicked");
+    setName(e.target.name);
     setLogin({
       ...login,
       [e.target.name]: e.target.value,
+      
+      
     });
     };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setName({
-    //   [e.target.name]: e.target.value,
-    // });
-    // setPassword({
-    //   [e.target.name]: e.target.value,
-    // });
+    // e.persist();
     setLogin({
       [e.target.name]: e.target.value,
     });
     LoginDataService.addLogin(login);
-    LoginDataService.addLogin(login);
-    
-  };
+  
+    };
   
 
     return (
@@ -68,13 +72,14 @@ function WelcomeComponent()  {
 
         <div className="box">
           <h1 className="welcome">
-            Welcome {id} to the Song Directory
+            Welcome {login.name} to the Song Directory
           </h1>
           <h2 className="manage">
             You can manage your songs
             <Link to="/songRegistry"> here</Link>
           </h2>
-        </div>
+          <p>{login.name}</p>
+         </div>
       </div>
     );
   
