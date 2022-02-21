@@ -51,3 +51,12 @@ code {
   transform: translateY(-1.5px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
+
+.display {
+visibility: visible;
+}
+
+
+.hide {
+  visibility: hidden;
+}
