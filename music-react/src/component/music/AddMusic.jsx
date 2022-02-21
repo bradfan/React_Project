@@ -3,7 +3,6 @@ import SongDataService from "../../service/SongDataService";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 
-
 function AddMusic() {
   const [songs, setSongs] = useState({});
   const { id } = useParams();
@@ -19,13 +18,13 @@ function AddMusic() {
     });
   }, []);
 
-    const handleChange = (e) => {
-      console.log("add song SAVE btn clicked");
-      setSongs({
-        ...songs,
-        [e.target.name]: e.target.value,
-      });
-      };
+  const handleChange = (e) => {
+    console.log("add song SAVE btn clicked");
+    setSongs({
+      ...songs,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,20 +51,34 @@ function AddMusic() {
               className="form-control"
               type="text"
               name="songTitle"
-             onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div>
             <label>Artist Name:</label>
-            <input className="form-control" type="text" name="artistName"  onChange={handleChange}/>
+            <input
+              className="form-control"
+              type="text"
+              name="artistName"
+              onChange={handleChange}
+            />
           </div>
           <div>
             <label>Album</label>
-            <input className="form-control" type="text" name="onAlbum"  onChange={handleChange}/>
+            <input
+              className="form-control"
+              type="text"
+              name="onAlbum"
+              onChange={handleChange}
+            />
           </div>
           <br />
           <br />
-          <button className="btn btn-success" type="submit" onClick={handleSubmit}>
+          <button
+            className="btn btn-success"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
           <br />

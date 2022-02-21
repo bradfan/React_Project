@@ -47,7 +47,7 @@ function UpdateMusicComponent() {
           <label>ID</label>
           <input
             className="form-control"
-            placeholder="Choose an ID that hasn't been assigned."
+            placeholder="The ID for this has been assigned and needs no update."
             type="text"
             name="id"
             onChange={handleChange}
